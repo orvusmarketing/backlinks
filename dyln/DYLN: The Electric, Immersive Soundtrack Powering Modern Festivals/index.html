@@ -1,0 +1,232 @@
+"<!DOCTYPE html>
+<html lang=""de"">
+<head>
+  <meta charset=""UTF-8"" />
+  <title>DYLN Music: The Electric, Immersive Soundtrack Powering Modern Festivals</title>
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1"" />
+  <style>
+    /* ===== Base layout (fixed structure) ===== */
+    :root {
+      --container-max: 960px;
+      --container-pad-x: clamp(16px, 4vw, 40px);
+      --container-pad-y: 2rem;
+      --text-color: #222;
+      --accent: #000;   /* will be overridden from ORIGINAL_ARTIKEL_HTML */
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+      color: var(--text-color);
+      background: #fff;
+    }
+    .content-wrapper {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: var(--container-pad-y) var(--container-pad-x);
+      box-sizing: border-box;
+      overflow: hidden; /* contain any accidental floats */
+    }
+    .banner {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .banner img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin: 1rem 0 2rem;
+      line-height: 1.2;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 2.5rem 0;
+    }
+    .cta-button {
+      padding: 0.9em 2.2em;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgb(0 0 0 / 0.15);
+      filter: saturate(1.02);
+    }
+
+    /* ===== Safety layer (scoped, prevents overflow) ===== */
+    .article-body,
+    .article-body * {
+      box-sizing: border-box;
+    }
+    .article-body {
+      /* Optional: keep long line-length readable */
+      /* max-width: 75ch; margin-inline: auto; */
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+    .article-body img,
+    .article-body picture,
+    .article-body svg {
+      max-width: 100% !important;
+      height: auto !important;
+      display: block;
+    }
+    .article-body iframe,
+    .article-body video,
+    .article-body embed,
+    .article-body object {
+      max-width: 100% !important;
+      width: 100% !important;
+      height: auto !important;
+      display: block;
+      aspect-ratio: 16/9; /* keeps media in frame */
+    }
+    .article-body table {
+      width: 100% !important;
+      border-collapse: collapse;
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .article-body pre {
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      padding: 1rem;
+      background: #f6f6f6;
+      border-radius: 8px;
+    }
+    .article-body blockquote {
+      margin: 1.2rem 0;
+      padding: 1rem 1.2rem;
+      border-left: 4px solid color-mix(in srgb, var(--accent) 70%, #0000);
+      background: #fafafa;
+      border-radius: 6px;
+    }
+    .article-body figure {
+      margin: 1.5rem 0;
+    }
+    .article-body figcaption {
+      font-size: .9em;
+      color: #666;
+      text-align: center;
+      margin-top: .5rem;
+    }
+
+    /* ===== Style mapping (override from ORIGINAL_ARTIKEL_HTML) =====
+       The agent should set:
+       - --font
+       - --text-color
+       - --accent
+       and optionally tune headings, links, etc., based on the input article.
+    */
+
+    /* Example defaults (will be overridden by the agent using input styles) */
+    .article-body a { color: var(--accent); }
+    .article-body h2, .article-body h3 { color: var(--text-color); }
+
+    /* ===== Scoped brand-style approximation (no original styles provided) ===== */
+    :root { --font: Inter, Roboto, Arial, sans-serif; --text-color: #222; --accent: #000; }
+    .article-body p { line-height: 1.7; margin: 1rem 0; }
+    .article-body h2 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: .5rem; }
+    .article-body h3 { font-size: 1.25rem; margin-top: 1.4rem; margin-bottom: .4rem; }
+    .article-body ul { padding-left: 1.2rem; }
+    .article-body li { margin: .4rem 0; }
+    .cta-button { letter-spacing: .2px; }
+
+    /* Images inside article should not dominate text; cap at 1/3 width */
+    .article-body figure img, .article-body img { max-width: min(33%, 360px) !important; margin-inline: auto; }
+  </style>
+
+  <!-- The agent may paste (scoped) CSS derived from the original article here.
+       It must target .article-body …, NOT global tags. -->
+</head>
+<body>
+
+  <div class=""content-wrapper"">
+    <div class=""banner"" role=""img"" aria-label=""DYLN Music festival banner"">
+      <img src=""https://drive.google.com/uc?export=view&id=1zrEgUOAvppZ0b3fAC7Ob1AJli12musBk"" alt=""DYLN Music banner — electric, immersive festival soundtrack"" />
+    </div>
+
+    <h1>DYLN Music: The Electric, Immersive Soundtrack Powering Modern Festivals</h1>
+
+    <div class=""cta-section"">
+      <h2 style=""margin-bottom: .8rem;"">Go to the full original article</h2>
+      <a href=""https://dyln.world/""
+         class=""cta-button""
+         target=""_blank""
+         rel=""noopener""
+         aria-label=""Open original DYLN Music website"">
+        Read the original
+      </a>
+    </div>
+
+    <!-- Original Artikel HTML (scoped) -->
+    <div class=""article-body"">
+      <p>dyln music is the pulse behind a new generation of live experiences. Built for high-energy stages, immersive art spaces, and boundary-pushing brand moments, DYLN blends cutting-edge sound design with crowd-moving rhythm to create performances that feel both immediate and unforgettable.</p>
+
+      <p>Where traditional festival sets rely on predictable drops, DYLN compositions evolve in real time—surging with intensity, then breathing, then exploding again—so the entire space becomes an instrument. The result is a sound that doesn’t just fill a venue; it reshapes it.</p>
+
+      <h2>What is DYLN Music?</h2>
+      <p>At its core, <a href=""https://dyln.world/"" target=""_blank"" rel=""noopener"">dyln music</a> is a creative platform and sound signature engineered for modern festivals and culture-forward events. It merges bass-heavy foundations, cinematic textures, and tactile percussive elements to drive immersion at scale—from intimate pop-ups to main stage showcases.</p>
+
+      <blockquote>
+        <strong>Electric. Immersive. Physical.</strong> DYLN is designed to be felt just as much as it’s heard—built for spaces where audio, light, and bodies move as one.
+      </blockquote>
+
+      <h2>Why dyln music dominates modern festivals</h2>
+      <ul>
+        <li><strong>Immersive by design:</strong> Layers of evolving synths, spatial FX, and dynamic low-end bring depth that translates beautifully on large-format systems.</li>
+        <li><strong>Energy control:</strong> Sets are structured to shape audience flow—opening the space, lifting the room, and landing peak moments with precision.</li>
+        <li><strong>Cross-genre fluency:</strong> From techno-adjacent momentum to hip-hop cadence and experimental electronica, DYLN adapts without losing identity.</li>
+        <li><strong>Brand-ready:</strong> The sound is contemporary, premium, and unmistakable—ideal for brand stages, experiential builds, and headline moments.</li>
+      </ul>
+
+      <h2>Signature sound elements</h2>
+      <h3>Low-end architecture</h3>
+      <p>Tight, sculpted sub and mid-bass provide propulsion without muddying the mix—optimized for big rooms and open-air stacks.</p>
+
+      <h3>Cinematic scaffolding</h3>
+      <p>Atmospheric pads, granular textures, and evolving drones add dimension, creating the sense of a world unfolding in real time.</p>
+
+      <h3>Physical percussion</h3>
+      <p>Strikes, clacks, and tactile hits cut through the spectrum and sync the body to the beat—essential for dance floors and festival grounds.</p>
+
+      <h2>Built for live adaptability</h2>
+      <p>DYLN sets are modular. Sections can be extended, intensified, or reworked on the fly to match room response, lighting cues, or crowd energy. This isn’t a linear playback experience—it’s a responsive system made for immersive environments.</p>
+
+      <ul>
+        <li><strong>Hybrid performance:</strong> Sequenced anchors meet live triggers and FX for spontaneity.</li>
+        <li><strong>Spatial awareness:</strong> Compositions translate cleanly across stereo, L-ISA, and other multi-array formats.</li>
+        <li><strong>Visual sync:</strong> Tempo and structure are designed to lock seamlessly with lighting and visual systems.</li>
+      </ul>
+
+      <h2>Where to experience it</h2>
+      <p>You’ll hear DYLN thrive at forward-thinking festivals, warehouse takeovers, next-gen art installations, and branded experiences built for impact. Whether it’s a sunset set or a late-night peak, the music is tailored to amplify the moment.</p>
+
+      <h2>Why it matters now</h2>
+      <p>Audiences are craving presence—not just playlists. dyln music answers with sound that engages the senses and unites the crowd, proving that the future of live culture is immersive, communal, and unmistakably physical.</p>
+
+      <h2>Explore dyln music</h2>
+      <p>Dive deeper into the world, sound, and vision behind DYLN. For bookings, collaborations, and upcoming appearances, visit the official site.</p>
+      <p><a href=""https://dyln.world/"" target=""_blank"" rel=""noopener""><strong>Explore DYLN</strong></a></p>
+    </div>
+  </div>
+
+</body>
+</html>"
