@@ -2,115 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Backlinks Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brands</title>
   <style>
     :root {
-      --bg: #0b0d10; --card: #13161a; --txt: #e8eef4; --muted:#9fb3c8; --accent:#d4a623;
+      --bg: #0b0d10; --card:#13161a; --txt:#e8eef4; --muted:#9fb3c8; --accent:#4da623;
       --max: 1100px;
     }
     * { box-sizing: border-box; }
-    body { margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:var(--txt); background:var(--bg); }
+    body { margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--txt); background:var(--bg); }
     header { border-bottom:1px solid #1e2329; }
-    header .wrap { max-width:var(--max); margin-inline:auto; padding:20px; display:flex; align-items:center; gap:10px; }
-    header h1 { margin:0; font-size:20px; font-weight:600; letter-spacing:.2px; }
-    main .wrap { max-width:var(--max); margin-inline:auto; padding:24px 20px 56px; }
-    h2 { margin:28px 0 12px; font-size:18px; font-weight:600; color:var(--muted); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:14px; }
+    header .wrap { max-width:var(--max); margin:0 auto; padding:20px; display:flex; align-items:center; gap:10px; }
+    header h1 { margin:0; font-size:22px; font-weight:700; letter-spacing:.2px; }
+    main .wrap { max-width:var(--max); margin:0 auto; padding:28px 20px 60px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
     .card { background:var(--card); border:1px solid #232932; border-radius:14px; padding:16px; }
     .card a { color:var(--txt); text-decoration:none; display:block; }
     .card a:hover { color:var(--accent); }
     .slug { color:var(--muted); font-size:12px; margin-top:6px; word-break:break-word; }
-    .error { background:#3a1a1a; color:#ffd7d7; padding:12px 14px; border:1px solid #5a2b2b; border-radius:10px; }
+    .error { background:#3a1a1a; color:#ffd9d9; padding:12px 14px; border:1px solid #5a2b2b; border-radius:10px; }
     footer { color:var(--muted); font-size:12px; text-align:center; padding:30px 20px 50px; border-top:1px solid #1e2329; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>Backlinks Overview</h1>
-    </div>
-  </header>
+  <header><div class="wrap"><h1>Brands</h1></div></header>
 
-  <main>
-    <div class="wrap">
-      <section>
-        <h2>Brands / Top-level folders</h2>
-        <div id="top" class="grid"></div>
-        <div id="top-fallback" class="error" hidden>
-          Couldn’t load folders from GitHub. Here’s a manual link:
-          <a href="./dyln/" style="color:#ffd37a">/dyln/</a>
-        </div>
-      </section>
+  <main><div class="wrap">
+    <section id="brands">
+      <div class="grid" id="brandsGrid" aria-live="polite"></div>
+      <div id="brandsError" class="error" hidden></div>
+    </section>
+  </div></main>
 
-      <section>
-        <h2>DYLN posts</h2>
-        <div id="dyln" class="grid"></div>
-        <div id="dyln-fallback" class="error" hidden>
-          Couldn’t load DYLN posts. Try reloading, or check that each post is a folder
-          with its own <code>index.html</code>.
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>Auto-generated from the repo structure. Add a folder → it appears here after deploy.</footer>
+  <footer>Auto-generated from the repo structure. Add a folder → it appears here.</footer>
 
   <script>
-    // Configure your repo here
-    const OWNER = 'orvusmarketing';
-    const REPO  = 'backlinks';
+    // --- Configure your repo ---
+    const OWNER  = "orvusmarketing";
+    const REPO   = "backlinks";
+    const BRANCH = "main";
 
-    // Optional: map slugs to pretty titles
-    const PRETTY = {
-      dyln: 'DYLN'
-      // add more like: "acme": "ACME Co."
-    };
+    // helpers
+    const pretty = s => s.replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 
-    async function listDirs(path = '') {
-      const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
-      const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' }});
-      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-      const data = await res.json();
-      return data.filter(item => item.type === 'dir');
+    async function loadTopLevelDirs(){
+      const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/?ref=${BRANCH}`;
+      const grid = document.getElementById('brandsGrid');
+      const err  = document.getElementById('brandsError');
+      try {
+        const res = await fetch(url);
+        if(!res.ok) throw new Error(`GitHub API ${res.status}`);
+        const items = await res.json();
+
+        const dirs = items.filter(x => x.type === 'dir' && !x.name.startsWith('.'));
+        if(dirs.length === 0){
+          grid.innerHTML = "<p>No brands yet. Create a top-level folder like <code>dyln</code>.</p>";
+          return;
+        }
+
+        grid.innerHTML = dirs.map(d => `
+          <article class="card">
+            <a href="./${d.name}/">
+              <strong>${pretty(d.name)}</strong>
+              <div class="slug">/${d.name}/</div>
+            </a>
+          </article>
+        `).join('');
+      } catch(e){
+        err.hidden = false;
+        err.textContent = "Could not read the repository structure (rate limit or network).";
+        console.error(e);
+      }
     }
 
-    function card(href, title, slug) {
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.innerHTML = `<a href="${href}">${title}</a><div class="slug">${slug}</div>`;
-      return div;
-    }
-
-    // Build “top-level folders” section
-    (async () => {
-      try {
-        const dirs = await listDirs('');  // repo root
-        const grid = document.getElementById('top');
-        dirs.forEach(d => {
-          const title = PRETTY[d.name] || d.name;
-          grid.appendChild(card(`./${d.name}/`, title, `/${d.name}/`));
-        });
-        if (!dirs.length) document.getElementById('top-fallback').hidden = false;
-      } catch {
-        document.getElementById('top-fallback').hidden = false;
-      }
-    })();
-
-    // Build “DYLN posts” (subfolders of /dyln)
-    (async () => {
-      try {
-        const dirs = await listDirs('dyln');
-        const grid = document.getElementById('dyln');
-        dirs.forEach(d => {
-          const title = d.name.replace(/[-_]/g, ' ');
-          grid.appendChild(card(`./dyln/${d.name}/`, title, `/dyln/${d.name}/`));
-        });
-        if (!dirs.length) document.getElementById('dyln-fallback').hidden = false;
-      } catch {
-        document.getElementById('dyln-fallback').hidden = false;
-      }
-    })();
+    loadTopLevelDirs();
   </script>
 </body>
 </html>
+
