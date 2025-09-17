@@ -1,0 +1,8 @@
+{
+  "vercel":   "https://{name}.vercel.app/",
+  "netlify":  "https://{name}.netlify.app/",
+  "cf":       "https://{name}.pages.dev/",
+  "github":   "https://orvusmarketing.github.io/backlinks/dyln/{tier}/{slug}/",
+  "azure":    "https://<ACCOUNT>.z6.web.core.windows.net/dyln/{tier}/{slug}/",
+  "ovh":      "https://backlinks.s3.us-west-lz-lax-a.cloud.ovh.us/dyln/{tier}/{slug}/"
+}
