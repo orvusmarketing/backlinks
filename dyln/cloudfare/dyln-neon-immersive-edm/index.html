@@ -1,0 +1,294 @@
+"<!DOCTYPE html>
+<html lang=""de"">
+<head>
+  <meta charset=""UTF-8"" />
+  <title>Inside DYLN's Neon Universe: How BoomTown and ADDICTED Redefine Immersive EDM</title>
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1"" />
+  <!-- CSP: allow self + Google Drive redirect chain for images -->
+  <meta http-equiv=""Content-Security-Policy""
+        content=""
+          default-src 'self';
+          img-src 'self' data: blob: https://drive.google.com https://drive.usercontent.google.com https://*.googleusercontent.com;
+          style-src 'self' 'unsafe-inline';
+          font-src 'self' data:;
+          connect-src 'self';
+          media-src 'self' data: blob:;
+          object-src 'none';
+          frame-ancestors 'self';
+          base-uri 'none';
+          form-action 'self';
+          upgrade-insecure-requests;
+        "">
+  <style>
+    /* ===== Brand-Variablen aus Brand Summary (mit Fallbacks) ===== */
+    :root{
+      --container-max:960px;
+      --container-pad-x:clamp(16px,4vw,40px);
+      --container-pad-y:2rem;
+
+      /* Farben/Typo dynamisch aus Brand Summary befüllen; Fallbacks: */
+      --ink: #ffffff;           /* Primärer Text (on dark) */
+      --ink-600: #e6e9ef;       /* dunkler Text/Border */
+      --accent: #00b3ff;        /* Primärer Akzent (electric blue) */
+      --accent-600: #8a00ff;    /* zusätzlicher neon purple */
+      --bg-soft: #0b0c0f;       /* dunkler, club-freundlicher Hintergrund */
+      --radius: 8px;              /* subtle rounding */
+      --font: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; /* Brand-Font/Fallback */
+
+      /* Optional zweite Akzentfarbe; wenn nicht vorhanden ≈ accent */
+      --accent-2: var(--accent-600);
+    }
+
+    /* ===== Base Layout (fix) ===== */
+    html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background:linear-gradient(180deg,#050507,var(--bg-soft));-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .content-wrapper{max-width:var(--container-max);margin:0 auto;padding:var(--container-pad-y) var(--container-pad-x);box-sizing:border-box;overflow:hidden}
+    .banner{text-align:center;margin-bottom:2rem}
+    .banner img{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:calc(var(--radius) + 4px);box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 48px rgba(0,179,255,.08)}
+    h1{text-align:center;margin:1rem 0 2rem;line-height:1.2;color:var(--ink);font-size:1.55rem}
+
+    .cta-section{text-align:center;margin:2.5rem 0;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.04));border:1px solid rgba(0,179,255,0.12);padding:1.6rem 1.2rem;box-shadow:0 8px 30px rgba(0,0,0,.6);border-radius:calc(var(--radius) + 2px)}
+    .cta-headline{margin-bottom:1rem;font-size:1.2em;font-weight:700;color:var(--accent-2)}
+    .cta-button{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff!important;padding:.85em 1.6em;font-size:1em;font-weight:700;margin-top:0.6rem;text-decoration:none;border-radius:calc(var(--radius) + 6px);transition:transform .15s,box-shadow .25s,filter .2s}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,179,255,.12);filter:saturate(1.05)}
+
+    /* ===== Safety layer (scoped) ===== */
+    .article-body,.article-body *{box-sizing:border-box}
+    .article-body{overflow-wrap:anywhere;word-break:normal}
+    .article-body img,.article-body picture,.article-body svg{max-width:100%!important;height:auto!important;display:block}
+    .article-body iframe,.article-body video,.article-body embed,.article-body object{max-width:100%!important;width:100%!important;height:auto!important;display:block;aspect-ratio:16/9}
+    .article-body table{width:100%!important;border-collapse:collapse;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .article-body pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word;padding:1rem;background:#0b0c0f;border-radius:calc(var(--radius) + 8px)}
+    .article-body blockquote{margin:1.2rem 0;padding:1rem 1.2rem;border-left:4px solid rgba(0,179,255,.6);background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(0,0,0,0.12));border-radius:calc(var(--radius) + 6px);color:var(--ink)}
+    .article-body figure{margin:1.5rem 0}
+    .article-body figcaption{font-size:.9em;color:#bfc7d6;text-align:center;margin-top:.5rem}
+    .article-body a{color:var(--accent);text-decoration:underline}
+    .article-body h2{font-size:1.4rem;margin:1.6rem 0 .5rem;color:var(--accent-2)}
+    .article-body h3{font-size:1.15rem;margin:1.2rem 0 .4rem;color:var(--ink)}
+    .article-body p{line-height:1.7;margin:1rem 0;color:var(--ink)}
+    .article-body ul{padding-left:1.2rem}
+    .article-body li{margin:.4rem 0}
+    .article-body figure img,.article-body img{max-width:min(33%,360px)!important;margin-inline:auto;border-radius:var(--radius)}
+
+    /* ===== Brand-Stilpaket (scoped auf .article-body.formatted-blog-post) ===== */
+    .article-body.formatted-blog-post{font-family:var(--font);color:var(--ink)}
+    .article-body.formatted-blog-post .summary{font-style:italic;color:#bfc7d6;margin-bottom:2.5rem}
+    .article-body.formatted-blog-post .article-ending{display:block;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.04);font-style:italic;color:var(--ink-600)}
+
+    /* Product section */
+    .article-body.formatted-blog-post .product-section{display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;margin-bottom:3rem}
+    .article-body.formatted-blog-post .product-section img{max-width:220px;border-radius:0;flex-shrink:0;height:auto}
+
+    /* Accordion (FAQs) */
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k{margin-top:3rem;margin-bottom:2rem;isolation:isolate}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k h2{font-size:1.6rem;font-weight:700;margin-bottom:1rem;color:var(--accent-2)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details{border:1px solid rgba(0,179,255,.12);border-radius:var(--radius);padding:0;margin-bottom:1rem;background:transparent;box-shadow:none;transition:box-shadow .35s,background .35s,border-color .25s;overflow:hidden}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details[open]{background:linear-gradient(180deg,rgba(0,0,0,0.02),rgba(255,255,255,0.01));box-shadow:0 6px 18px rgba(0,179,255,.05);border-color:rgba(0,179,255,.28)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary{font-weight:700;font-size:1.05rem;cursor:pointer;outline:none;background:none;padding:1rem 1.25rem 1rem 2.5rem;color:var(--accent);position:relative;list-style:none;line-height:1.5}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::-webkit-details-marker,
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::marker{display:none}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::before{content:""▶"";position:absolute;left:.75rem;top:50%;transform:translateY(-50%) rotate(0);transform-origin:center;transition:transform .35s cubic-bezier(.25,.8,.25,1);color:var(--accent);font-size:1.1rem}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details[open] summary::before{transform:translateY(-50%) rotate(90deg)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details>*:not(summary){padding:0 1.25rem 1rem 2.5rem;color:var(--ink)}
+
+    /* Side-by-side */
+    .article-body.formatted-blog-post .side-by-side{display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem}
+    .article-body.formatted-blog-post .side-by-side.special-image-left{flex-direction:row}
+    .article-body.formatted-blog-post .side-by-side.product-image-right{flex-direction:row-reverse}
+    .article-body.formatted-blog-post .special-image-left img,
+    .article-body.formatted-blog-post .product-image-right img{flex:1 1 0;max-width:220px;min-width:120px;width:100%;height:auto}
+    .article-body.formatted-blog-post .special-image-left .side-text,
+    .article-body.formatted-blog-post .product-image-right .side-text{flex:2 1 0;min-width:0;padding-left:1rem;padding-right:1rem}
+    @media (max-width:768px){
+      .article-body.formatted-blog-post .side-by-side{flex-direction:column!important;gap:1rem}
+      .article-body.formatted-blog-post .side-by-side .side-text,
+      .article-body.formatted-blog-post .side-by-side img{padding-left:0;padding-right:0;max-width:100%;min-width:0}
+    }
+
+    /* Highlights – Spacing + Animations (nutzen Brandfarben) */
+    .article-body.formatted-blog-post .article-highlights{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;padding:1rem 0}
+    .article-body.formatted-blog-post .article-highlights .highlight-card{background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.02) 55%, rgba(0,0,0,0.04) 100%);box-shadow:0 6px 20px rgba(0,0,0,.6);padding:1rem 1.2rem;display:flex;align-items:center;border-left:4px solid var(--accent);font-weight:700;font-size:1.02em;line-height:1.4;border-radius:calc(var(--radius) + 2px);transition:transform 180ms,box-shadow 220ms,background 300ms,border-color 200ms,filter 200ms}
+    .article-body.formatted-blog-post .article-highlights .highlight-card:hover{transform:translateY(-3px) scale(1.01);border-left-color:var(--accent-2);box-shadow:0 18px 36px rgba(0,179,255,.06)}
+
+    .article-body.formatted-blog-post .highlight-text{color:var(--accent);font-size:1.02em;font-weight:700}
+
+    /* Fokus & reduzierte Bewegung */
+    .article-body.formatted-blog-post .cta-button:focus-visible,
+    .article-body.formatted-blog-post summary:focus-visible{outline:2px solid rgba(0,179,255,.6);outline-offset:3px}
+    @media (prefers-reduced-motion:reduce){
+      .article-body.formatted-blog-post .article-highlights .highlight-card{transition:box-shadow 220ms,background-color 200ms,border-color 200ms,filter 200ms}
+      .article-body.formatted-blog-post .article-highlights .highlight-card:hover{transform:none}
+      .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k .accordion-content{transition:none;max-height:none;opacity:1}
+    }
+  </style>
+</head>
+<body>
+  <div class=""content-wrapper"">
+    <div class=""banner"" role=""img"" aria-label=""DYLN neon banner with live visuals"">
+      <img src=""https://drive.google.com/thumbnail?id=1ysU__pBbFx9kCJyaPxKYm-IAv6ZvT4WG"" alt=""DYLN neon live visuals banner"" />
+    </div>
+    <h1>Inside DYLN's Neon Universe: How BoomTown and ADDICTED Redefine Immersive EDM</h1>
+    <div class=""cta-section"">
+      <h2 class=""cta-headline"">Step into the drop — feel dyln music live</h2>
+      <a href=""https://dyln-artist.s3.nl-ams.scw.cloud/dyln-neon-live-visuals-how-to-design-festival-drops.html"" class=""cta-button"" target=""_blank"" rel=""noopener nofollow"" aria-label=""Open DYLN Neon Live Visuals"">Explore dyln music Live Visuals</a>
+    </div>
+    <div class=""article-body formatted-blog-post"">
+      <!-- Generiere dynamisch: Summary, Highlights, Hauptsektionen, Side-by-side, Produkt-/Bild-Sektion, FAQ (Accordion), Glossar, Article Ending — alles in Brand-Voice, ≥ 2.000 Wörter -->
+      <section class=""summary"">
+        <p class=""summary"">This is the neon pulse you don’t watch from the sidelines. Inside DYLN’s world, tracks like “ADDICTED” and sets like BoomTown are more than sound — they’re immersive experiences that bend light, rhythm, and identity into one electrifying moment. Read on and learn how visuals, design, and raw emotion combine to redefine what live EDM feels like.</p>
+      </section>
+
+      <section class=""article-highlights"" aria-label=""Highlights"">
+        <div class=""highlight-card""><span class=""highlight-text"">Neon Sovereignty:</span>&nbsp;Designs built around bold contrast and unapologetic color — see and be seen.</div>
+        <div class=""highlight-card""><span class=""highlight-text"">Rhythm-Driven Visuals:</span>&nbsp;Every frame synced to tempo, every flash a heartbeat.</div>
+        <div class=""highlight-card""><span class=""highlight-text"">Community First:</span>&nbsp;From the back row to the front, DYLN makes space for everyone to roar.</div>
+        <div class=""highlight-card""><span class=""highlight-text"">Drop Mechanics:</span>&nbsp;How “boom boom” sub-bass translates to visual drop physics.</div>
+      </section>
+
+      <section class=""main-content"">
+        <h2>Why visuals matter — and why DYLN makes them sing</h2>
+        <p>EDM is a language of energy. A drop is a punctuation mark. For DYLN, visuals are the grammar that turns those beats into conversation. When “ADDICTED” hits its high-energy bridge, visuals don’t just accompany the sound — they echo its emotional shape: tension builds, the lights compress, motion tightens, and then the world opens on a neon release.</p>
+
+        <h3>The philosophy: identity through intensity</h3>
+        <p>DYLN’s message is simple: show up, don’t dim your light. That stance is echoed in every design choice — high-contrast palettes, crisp sans-serif typography, and motion that moves like a heartbeat. It’s not about spectacle for spectacle’s sake. It’s about clarity: when you walk into the blue-and-purple glow of a DYLN set, the visual language says, you belong here. Let that be loud.</p>
+
+        <h3>How sound informs sight — practical examples</h3>
+        <p>Take BoomTown’s core arrangement: a tension-building synth, a rolling percussion lane, then that signature “boom” that reframes the entire track. Translating that to visuals is a three-step approach:</p>
+        <ul>
+          <li>Map tempo to motion amplitude: low-pass sweeps sync with bloom and vignette shifts.</li>
+          <li>Translate sub-bass to scale: low frequencies push large geometric shapes and light pulses across the screen.</li>
+          <li>Use contrast as narrative: silence dims ambient detail; drops crank color saturation and sharpness for immediacy.</li>
+        </ul>
+
+        <h2>Designing festival drops: visual principles that hit hard</h2>
+        <p>Designing festival visuals is engineering emotion. Below are proven creative steps DYLN uses when planning a live drop:</p>
+
+        <h3>Step 1 — Start from the human moment</h3>
+        <p>Ask: who’s in the crowd? The kid who bobs in the back. The friend who lives for the last second of the build. Visuals should invite both. Keep primary motion centered on human scale, then expand outward — simulate light wrapping around bodies rather than abstract, cold textures that isolate the audience.</p>
+
+        <h3>Step 2 — Build contrast, then release it</h3>
+        <p>High-contrast frames create focus. Use deep blacks, electric blues, neon pinks, and pop whites like punctuation. In the build, compress color and motion; in the drop, flood with contrast and kinetic geometry. That sense of release is what makes a crowd move together.</p>
+
+        <h3>Step 3 — Make the drop tactile</h3>
+        <p>Use low-frequency-driven displacement maps, motion blur tied to bass decay, and layered particle systems that move with side-chained audio envelopes. These choices turn what you hear into something you can almost touch — the gut-thud of “boom boom” becomes a visual vibration you can see in the air.</p>
+
+        <h2>Technical recipe (creative, not clinical)</h2>
+        <p>Whether you’re a VJ, a stage designer, or an aspiring visualist, here’s a compact cheat-sheet inspired by the DYLN approach:</p>
+        <ul>
+          <li>Palette: #00040A (near-black), electric blue (var(--accent)), neon purple (var(--accent-2)), hot pink accents, white highlights.</li>
+          <li>Typography: bold, geometric sans-serif for display; clear numeric indicators for tempo overlays when needed.</li>
+          <li>Motion: tempo-synced modulation (LFO → bloom/scale), bass-triggered camera shake, and strobe sparingly for impact.</li>
+          <li>Textures: minimal gradients, high-contrast silhouettes, neon edge glows — avoid soft pastels or vintage grain.</li>
+        </ul>
+
+        <h2>Song-by-song breakdown: visuals that match the music</h2>
+        <h3>ADDICTED — the rush</h3>
+        <p>“ADDICTED” is about the thrill of surrender. Visuals for this track layer fast-moving ribbons of light with sudden, high-contrast snaps. Motion is aggressive but clean — a neon rush with enough space for faces to read expression. Use quick shuttering bright flashes on the transient to sell that adrenaline moment.</p>
+
+        <h3>BoomTown — the universe</h3>
+        <p>BoomTown is designed to feel like a place. Think wide vistas of neon geometry, looping visualizers that create depth, and a mid-range synth that controls the horizon’s oscillation. The drop is less a single strike and more a swell that carries the crowd forward — visuals translate this by expanding horizons and increasing parallax on every beat.</p>
+
+        <h2>Real-world staging tips for festival settings</h2>
+        <p>Festival stages vary. DYLN optimizes the visual plan to the space:</p>
+        <ol>
+          <li>Identify the sightlines: design for the widest field, then add localized focal points for VIP areas.</li>
+          <li>Balance LED intensity with ambient lights: neon accents should cut through but not blind.</li>
+          <li>Leave breathing room between visuals and camera ops — too much motion competes with content capture.</li>
+        </ol>
+
+        <h3>Making inclusivity part of the show</h3>
+        <p>Inclusivity is non-negotiable. Design elements should avoid heavy stereotyping, should include diverse on-screen silhouettes, and make space for anyone to feel represented in the visuals. When you make the crowd the protagonist, everyone leans in.</p>
+
+        <h2>Side-by-side: visuals + real image</h2>
+      </section>
+
+      <section class=""side-by-side special-image-left"" aria-label=""Side by side visuals"">
+        <img src=""https://drive.google.com/thumbnail?id=1p3BFwHXL9duQUWD3T6lw7qMHziVv1DpA"" alt=""DYLN live performance still"" />
+        <div class=""side-text"">
+          <h3>See it in motion</h3>
+          <p>The left image is a freeze-frame of a live moment: saturated blues collide with magenta edges, a crowd silhouette holds center stage, and the main visualizer pulses with the sub-bass. Notice the composition: central negative space reserved for the crowd’s movement; peripheral neon shapes add kinetic context without stealing attention.</p>
+          <p>Use images like this as reference when building sets. Keep your visuals bold, legible, and rhythm-aware.</p>
+        </div>
+      </section>
+
+      <section class=""product-section"" aria-label=""Visual elements and assets"">
+        <img src=""https://drive.google.com/thumbnail?id=1p3BFwHXL9duQUWD3T6lw7qMHziVv1DpA"" alt=""Visualizer asset sample"" />
+        <div>
+          <h3>Design assets that travel</h3>
+          <p>Create modular visual assets — loops, particle fields, displacement textures — that can be retimed and rescaled across stages. Modularity keeps the DYLN aesthetic consistent: clean, neon-forward, and always tuned to the beat.</p>
+          <ul>
+            <li>Short loops (4–8 bars) for transitions</li>
+            <li>Bass-synced displacement layers for drops</li>
+            <li>High-contrast silhouettes for audience overlays</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class=""cta-section"" style=""margin-top:1rem;"">
+        <h2 class=""cta-headline"">Want visuals that match the rush?</h2>
+        <p style=""color:#cbd6e8;"">Get the playbook for building drops that make people move. Learn the DYLN way and translate your sound into a visual language that roars.</p>
+        <a href=""https://dyln-artist.s3.nl-ams.scw.cloud/dyln-neon-live-visuals-how-to-design-festival-drops.html"" class=""cta-button"" target=""_blank"" rel=""noopener nofollow"" aria-label=""Open guide to dyln music visuals"">Get the dyln music Visual Playbook</a>
+      </section>
+
+      <section class=""featured-accordion--accordion_VDHx7k"" aria-label=""FAQ"">
+        <h2>FAQ — quick answers, bold truths</h2>
+
+        <details>
+          <summary>How do you translate sub-bass into visuals without overdoing it?</summary>
+          <div class=""accordion-content"">
+            <p>Tie sub-bass to large-scale motion with long decay and soft bloom. Avoid jittery micro-movements on every low hit — instead, let the bass modulate scale and light intensity over several frames so the visual feels like a physical push, not a toaster flicker.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What color combos cut through festival light pollution?</summary>
+          <div class=""accordion-content"">
+            <p>Electric blue + neon purple + hot pink with white highlights consistently read well. Keep black or near-black negative space to maintain contrast. Avoid pastels and desaturated palettes.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How much motion is too much?</summary>
+          <div class=""accordion-content"">
+            <p>When you can’t tell where to look, the motion is too much. Prioritize anchor points — faces, central silhouettes, and a dominant geometric element. Use peripheral motion to support, not compete.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can visuals be accessible for neurodiverse audiences?</summary>
+          <div class=""accordion-content"">
+            <p>Yes. Offer reduced-strobe segments, lower-intensity color states, and pre-show warnings. Small adjustments — consistent beat patterns, less rapid contrast flashing — make the same show accessible to many more people.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do you keep visuals fresh across multiple festival dates?</summary>
+          <div class=""accordion-content"">
+            <p>Create a modular library: base assets that define the track, plus swap-in color and motion packs to adapt to differing stages and crowds. That keeps the visual identity intact while making each performance feel alive.</p>
+          </div>
+        </details>
+
+      </section>
+
+      <section class=""glossary"" aria-label=""Glossary"">
+        <h2>Glossary — speak the visual language</h2>
+        <ul>
+          <li><strong>Drop:</strong> The moment of release when tension breaks and energy surges — visually, a dramatic increase in scale and brightness.</li>
+          <li><strong>Sub-bass:</strong> The lowest frequencies that you feel in your chest; often tied to large visual motion.</li>
+          <li><strong>Visualizer:</strong> A graphic layer that reacts to audio — can be abstract shapes, particles, or waveform-based.</li>
+          <li><strong>Parallax:</strong> Layered motion that creates depth by moving background and foreground at different speeds.</li>
+          <li><strong>Bloom:</strong> A glow effect that simulates light bleeding from bright areas, used to emphasize highlights.</li>
+          <li><strong>Tempo-sync:</strong> Timing visual modulations to the track’s BPM.</li>
+          <li><strong>Displacement map:</strong> A texture used to deform imagery in sync with audio dynamics.</li>
+          <li><strong>Edge glow:</strong> Neon outline that separates shapes from dark backgrounds for legibility.</li>
+          <li><strong>Anchor point:</strong> A fixed visual focus that the audience can return to between rapid motions.</li>
+          <li><strong>Strobe etiquette:</strong> Guidelines governing flash intensity and duration for safety and accessibility.</li>
+        </ul>
+      </section>
+
+      <p class=""article-ending"">This is a map, not a rulebook. DYLN’s approach is bold because music is meant to be felt — not muted. Build visuals that amplify identity, invite the crowd, and let the neon do the talking. Stay bold. Stay free.</p>
+
+      <p style=""margin-top:1.25rem;font-size:.95em;color:#bfc7d6"">Explore the full visual breakdown and download assets at <a href=""https://dyln-artist.s3.nl-ams.scw.cloud/dyln-neon-live-visuals-how-to-design-festival-drops.html"" target=""_blank"" rel=""noopener nofollow"">https://dyln-artist.s3.nl-ams.scw.cloud/dyln-neon-live-visuals-how-to-design-festival-drops.html</a></p>
+    </div>
+  </div>
+</body>
+</html>"
