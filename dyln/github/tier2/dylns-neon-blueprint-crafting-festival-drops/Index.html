@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>DYLN Music: Inside the Neon Universe of ADDICTED, BOOMTOWN & Festival Energy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- CSP: allow self + Google Drive redirect chain for images -->
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src 'self';
+          img-src 'self' data: blob: https://drive.google.com https://drive.usercontent.google.com https://*.googleusercontent.com;
+          style-src 'self' 'unsafe-inline';
+          font-src 'self' data:;
+          connect-src 'self';
+          media-src 'self' data: blob:;
+          object-src 'none';
+          frame-ancestors 'self';
+          base-uri 'none';
+          form-action 'self';
+          upgrade-insecure-requests;
+        ">
+  <style>
+    /* ===== Brand-Variablen aus Brand Summary (mit Fallbacks) ===== */
+    :root{
+      --container-max:960px;
+      --container-pad-x:clamp(16px,4vw,40px);
+      --container-pad-y:2rem;
+
+      /* Farben/Typo dynamisch aus Brand Summary befüllen; Fallbacks: */
+      --ink: #252832;           /* Primärer Text */
+      --ink-600: #3a3e4a;       /* dunkler Text/Border */
+      --accent: #00b3ff;        /* Primärer Akzent (adjusted to electric blue neon) */
+      --accent-600: #007aa3;    /* dunkler Akzent */
+      --bg-soft: #0b0b0c;       /* darker foundation for high-contrast neon look */
+      --radius: 0;              /* 0 = scharf, >0 = runder */
+      --font: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; /* Brand-Font/Fallback */
+
+      /* Optional zweite Akzentfarbe; wenn nicht vorhanden ≈ accent */
+      --accent-2: #e684ff;
+    }
+
+    /* ===== Base Layout (fix) ===== */
+    html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background:linear-gradient(180deg,#060608 0%,#0f0f11 60%)}
+    .content-wrapper{max-width:var(--container-max);margin:0 auto;padding:var(--container-pad-y) var(--container-pad-x);box-sizing:border-box;overflow:hidden}
+    .banner{text-align:center;margin-bottom:2rem}
+    .banner img{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:calc(var(--radius) + 12px);box-shadow:0 8px 26px rgba(0,0,0,.6);border:2px solid rgba(0,0,0,.4)}
+    h1{text-align:center;margin:1rem 0 2rem;line-height:1.2;color:#f7fbff}
+
+    .cta-section{text-align:center;margin:2.5rem 0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(255,255,255,.02));border:2px solid rgba(0,179,255,.14);padding:2rem 1.5rem;box-shadow:0 8px 34px rgba(0,179,255,.06);border-radius:calc(var(--radius) + 8px)}
+    .cta-headline{margin-bottom:1.2rem;font-size:1.5em;font-weight:700;color:#eaf8ff}
+    .cta-button{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041017!important;padding:.9em 2.2em;font-size:1.1em;font-weight:700;margin-top:1.2rem;text-decoration:none;border-radius:calc(var(--radius) + 8px);transition:transform .15s,box-shadow .25s,filter .2s}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,179,255,.18);filter:saturate(1.05)}
+
+    /* ===== Safety layer (scoped) ===== */
+    .article-body,.article-body *{box-sizing:border-box}
+    .article-body{overflow-wrap:anywhere;word-break:normal;color:#eaf8ff}
+    .article-body img,.article-body picture,.article-body svg{max-width:100%!important;height:auto!important;display:block}
+    .article-body figure img,.article-body img{max-width:min(33%,360px)!important;margin-inline:auto;border-radius:var(--radius);border:1px solid rgba(255,255,255,.04)}
+    .article-body iframe,.article-body video,.article-body embed,.article-body object{max-width:100%!important;width:100%!important;height:auto!important;display:block;aspect-ratio:16/9}
+    .article-body table{width:100%!important;border-collapse:collapse;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .article-body pre{max-width:100%;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word;padding:1rem;background:#0b0b0c;border-radius:calc(var(--radius) + 8px)}
+    .article-body blockquote{margin:1.2rem 0;padding:1rem 1.2rem;border-left:4px solid rgba(0,179,255,.6);background:linear-gradient(90deg,rgba(0,179,255,.03),transparent);border-radius:calc(var(--radius) + 6px);color:#d7f6ff}
+    .article-body figure{margin:1.5rem 0}
+    .article-body figcaption{font-size:.9em;color:#bcdff9;text-align:center;margin-top:.5rem}
+    .article-body a{color:var(--accent);text-decoration:underline}
+    .article-body h2{font-size:1.6rem;margin:2rem 0 .5rem;color:#fff}
+    .article-body h3{font-size:1.25rem;margin:1.4rem 0 .4rem;color:#eaf8ff}
+    .article-body p{line-height:1.7;margin:1rem 0;color:#dbeeff}
+    .article-body ul{padding-left:1.2rem}
+    .article-body li{margin:.4rem 0}
+
+    /* ===== Brand-Stilpaket (scoped auf .article-body.formatted-blog-post) ===== */
+    .article-body.formatted-blog-post{font-family:var(--font);color:#dbeeff}
+    .article-body.formatted-blog-post .summary{font-style:italic;color:#bcdff9;margin-bottom:2.5rem}
+    .article-body.formatted-blog-post .article-ending{display:block;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.04);font-style:italic;color:#a7cfe8}
+
+    /* Product section */
+    .article-body.formatted-blog-post .product-section{display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;margin-bottom:3rem}
+    .article-body.formatted-blog-post .product-section img{max-width:220px;border-radius:0;flex-shrink:0;height:auto}
+
+    /* Accordion (FAQs) */
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k{margin-top:3rem;margin-bottom:2rem;isolation:isolate}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k h2{font-size:1.8rem;font-weight:700;margin-bottom:1.5rem;color:#fff}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details{border:1px solid rgba(0,179,255,.14);border-radius:var(--radius);padding:0;margin-bottom:2rem;background:transparent;box-shadow:0 3px 10px rgba(0,0,0,.5);transition:box-shadow .35s,background .35s,border-color .25s;overflow:hidden}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details[open]{background:linear-gradient(180deg,rgba(0,179,255,.02),rgba(255,255,255,.01));box-shadow:0 6px 18px rgba(0,179,255,.06);border-color:rgba(0,179,255,.95)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary{font-weight:700;font-size:1.2rem;cursor:pointer;outline:none;background:none;padding:1rem 1.25rem 1rem 2.5rem;color:var(--accent);position:relative;list-style:none;line-height:1.5}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::-webkit-details-marker,
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::marker{display:none}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k summary::before{content:"▶";position:absolute;left:.75rem;top:50%;transform:translateY(-50%) rotate(0);transform-origin:center;transition:transform .35s cubic-bezier(.25,.8,.25,1);color:var(--accent);font-size:1.2rem}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details[open] summary::before{transform:translateY(-50%) rotate(90deg)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details>*:not(summary){padding:0 1.25rem 1rem 2.5rem;color:var(--ink)}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k .accordion-content{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s,opacity .35s}
+    .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k details[open] .accordion-content{max-height:1000px;opacity:1}
+
+    /* Side-by-side */
+    .article-body.formatted-blog-post .side-by-side{display:flex;align-items:flex-start;gap:2rem;margin-bottom:2rem}
+    .article-body.formatted-blog-post .side-by-side.special-image-left{flex-direction:row}
+    .article-body.formatted-blog-post .product-image-right{flex-direction:row-reverse}
+    .article-body.formatted-blog-post .special-image-left img,
+    .article-body.formatted-blog-post .product-image-right img{flex:1 1 0;max-width:220px;min-width:120px;width:100%;height:auto}
+    .article-body.formatted-blog-post .special-image-left .side-text,
+    .article-body.formatted-blog-post .product-image-right .side-text{flex:2 1 0;min-width:0;padding-left:1rem;padding-right:1rem}
+    @media (max-width:768px){
+      .article-body.formatted-blog-post .side-by-side{flex-direction:column!important;gap:1rem}
+      .article-body.formatted-blog-post .side-by-side .side-text,
+      .article-body.formatted-blog-post .side-by-side img{padding-left:0;padding-right:0;max-width:100%;min-width:0}
+    }
+
+    /* Highlights – Spacing + Animations (nutzen Brandfarben) */
+    .article-body.formatted-blog-post .article-highlights{display:flex;flex-direction:column;gap:1.5rem;margin:2.5rem 0;padding:1rem 0}
+    .article-body.formatted-blog-post .article-highlights .highlight-card{background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,transparent 55%, rgba(0,179,255,0.02) 100%);box-shadow:0 4px 20px rgba(0,0,0,.6),0 2px 8px rgba(0,179,255,.06);padding:1.4rem 1.5rem;display:flex;align-items:center;border-left:4px solid var(--accent);border-right:2px solid rgba(255,255,255,.04);font-weight:700;font-size:1.05em;line-height:1.5;border-radius:var(--radius);transition:transform 180ms,box-shadow 220ms,background 300ms,border-color 200ms,filter 200ms}
+    .article-body.formatted-blog-post .article-highlights .highlight-card:hover{transform:translateY(-3px) scale(1.01);background:linear-gradient(135deg,rgba(255,255,255,0.02) 0%,transparent 35%, rgba(0,179,255,0.02) 100%);border-left-color:var(--accent-600);border-right-color:rgba(255,255,255,.07);box-shadow:0 10px 28px rgba(0,179,255,.08)}
+
+    .article-body.formatted-blog-post .highlight-text{color:var(--accent);font-size:1.05em;font-weight:700}
+
+    /* Fokus & reduzierte Bewegung */
+    .article-body.formatted-blog-post .cta-button:focus-visible,
+    .article-body.formatted-blog-post summary:focus-visible{outline:2px solid rgba(0,179,255,.55);outline-offset:3px}
+    @media (prefers-reduced-motion:reduce){
+      .article-body.formatted-blog-post .article-highlights .highlight-card{transition:box-shadow 220ms,background-color 200ms,border-color 200ms,filter 200ms}
+      .article-body.formatted-blog-post .article-highlights .highlight-card:hover{transform:none}
+      .article-body.formatted-blog-post .featured-accordion--accordion_VDHx7k .accordion-content{transition:none;max-height:none;opacity:1}
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="banner" role="img" aria-label="DYLN neon festival banner">
+      <img src="https://drive.google.com/thumbnail?id=1_9AosA1bhZ19SVTw2-rQEhKJpWSaMJKA" alt="DYLN neon festival visual" />
+    </div>
+    <h1>DYLN Music: Inside the Neon Universe of ADDICTED, BOOMTOWN & Festival Energy</h1>
+    <div class="cta-section">
+      <h2 class="cta-headline">Step into the Neon — experience dyln music worlds</h2>
+      <a href="https://dyln-music.s3.eu-north-1.amazonaws.com/how-dyln-built-neon-electric-festival-worlds" class="cta-button" target="_blank" rel="noopener nofollow" aria-label="Open feature on dyln music">Explore dyln music — Enter the Neon</a>
+    </div>
+    <div class="article-body formatted-blog-post">
+      <!-- Generiere dynamisch: Summary, Highlights, Hauptsektionen, Side-by-side, Produkt-/Bild-Sektion, FAQ (Accordion), Glossar, Article Ending — alles in Brand-Voice, ≥ 2.000 Wörter -->
+      <section class="summary">
+        <p>From the first cut of the drop to the last shimmering tail of a synth, DYLN builds worlds that glow. In this deep dive we pull the curtain back on how tracks like "ADDICTED" and experiences like "BoomTown" became more than songs — they became neon ecosystems, a place for anyone who wants to be seen, loud and unfiltered.</p>
+        <p>Expect an energetic walkthrough of creative choices, live performance DNA, production craft, and the community that turns sound into a shared electric moment. This is not a dry case study — it’s an invitation to feel the pulse. Read on, step in, and bring your hands up.</p>
+      </section>
+
+      <section class="article-highlights">
+        <div class="highlight-card">
+          <div class="highlight-text">Electric identity: music that lets you stand bright, bold, and seen.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-text">Festival-first design: visuals and drops designed for light, sweat, and a thousand raised hands.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-text">Immersive production: sub-bass you feel in your chest, synths that paint neon shapes in the air.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-text">Community over ego: a space for night owls, back-row feelers, and front-stage believers.</div>
+        </div>
+      </section>
+
+      <section class="main-content">
+        <h2>The sonic blueprint: turning a track into a world</h2>
+        <p>Every DYLN track starts with one question: how should this make someone feel in the moment the beat drops? That primal moment — breath held, lights flash, bass hits — drives choices at every stage. "ADDICTED" was written for that rush: tight percussion, a vocal hook that acts like a neon sign, and a drop designed to reset the room's heartbeat.</p>
+        <h3>Design rules for a neon drop</h3>
+        <ul>
+          <li>Contrast the arrangement: quiet pre-drop textures that make the drop feel like a body reset.</li>
+          <li>Use space intentionally: leave room for light and audience reaction — don’t overcrowd the frequency range.</li>
+          <li>Make the sub-bass an instrument: sculpt its decay so it breathes with the crowd.</li>
+          <li>Signature motifs: tiny melodic hooks that can be replayed visually as LEDs or strobes.</li>
+        </ul>
+
+        <h2>Visuals and motion: syncing sight with sound</h2>
+        <p>If the music is the language, visuals are the accent. DYLN’s visual strategy is high-contrast neon — electric blue, violet, and magenta slicing through black. Motion isn’t decorative; it’s rhythmic. A pulsing visualizer, a sharp strobe, a bloom that expands on every snare — these moments create the sense of being inside the track.</p>
+
+        <h3>How we plan a set visually</h3>
+        <ol>
+          <li>Map the set to peaks: identify the energetic highs and give them distinct visual signatures.</li>
+          <li>Create reusable motifs: a neon grid or a broken-glass shimmer that punctuates multiple tracks.</li>
+          <li>Allow the visuals to breathe: let slow moments carry soft gradients, then snap to neon during drops.</li>
+          <li>Test in context: run visuals against the mix to ensure luminance and frequency collide without blinding.</li>
+        </ol>
+
+        <h2>Writing for festival spaces — lessons from BoomTown</h2>
+        <p>When I made "BoomTown," I wasn’t just assembling stems. I envisioned a physical space: a skyline of LED bars, pockets of fog, and a crowd that could move between sonic micro-worlds. The song structure is intentionally modular — sections can be looped, extended, or mashed up live so the DJ or performance team can sculpt tempo and energy in real time.</p>
+        <p>That flexibility is crucial at festivals. People arrive, migrate, and react. A festival track must be both immediate and elastic: immediate enough that you know where to move the body, elastic enough to ride a rising soundwave for minutes.</p>
+
+        <h3>Practical setup tips for festival-ready tracks</h3>
+        <ul>
+          <li>Keep stems clean and labeled for live manipulation.</li>
+          <li>Design breakdowns with DJ-friendly cues (filter automation, vocal chop markers).</li>
+          <li>Prioritize dynamic range — give the sound engineer headroom to push without distortion.</li>
+        </ul>
+
+        <h2>Production craft: where emotion meets technology</h2>
+        <p>Production is a balance between visceral impact and technical clarity. In DYLN’s work, that means layering synths to produce a forward thrust while keeping the midrange clean for vocals and hooks. It’s about designing harmonics that translate across club systems and tiny phone speakers — the emotional core must survive every playback environment.</p>
+
+        <h3>Mixing checklist for chest-shaking impact</h3>
+        <ul>
+          <li>Low-end separation: carve space for kick and sub so the chest hits but the mix remains tight.</li>
+          <li>Transient shaping: the initial attack of percussive elements should be sharp and defined.</li>
+          <li>Spatial FX: tasteful reverb and delay that create depth without washing the chorus.</li>
+          <li>Glue the energy: bus compression that preserves punch while unifying the mix.</li>
+        </ul>
+
+        <h2>Performance philosophy: freedom, not formula</h2>
+        <p>The live show is where identity surfaces. I tune sets to be a conversation: call-and-response with the crowd, moments of vulnerability, and rooms of pure abandon. Tracks like "PROUD" and "NASTY" are built so I can lean into different moods — sometimes raw and confrontational, sometimes tender and communal.</p>
+
+        <h3>Three stage tactics I use</h3>
+        <ul>
+          <li>Dynamic layering: bring elements in and out to shape audience focus.</li>
+          <li>Visual callbacks: trigger specific visuals on repeated motifs to create recognition.</li>
+          <li>Vulnerability pockets: short, quieter moments that let the crowd breathe before we slam back into the drop.</li>
+        </ul>
+
+        <p>Every set is an act of community building. The person in the back row who feels every beat, the night owl who listens for textures — they’re all part of the same neon neighborhood. That’s the design: to make people feel like they belong.</p>
+
+        <h2>Building community: beyond the music</h2>
+        <p>Community for DYLN isn’t follower counts. It’s the ritual: people who show up because a song became their voice. To foster that, content and merch lean into the same aesthetics: bold type, neon motifs, and messages that invite participation — "stay bold. stay free."</p>
+
+        <h3>Ways we keep the community active</h3>
+        <ul>
+          <li>Exclusive drops of stems and remixes for producers who tag the project.</li>
+          <li>Visual packs for fans to use in their clips, preserving the brand look.</li>
+          <li>Community nights where fans can submit crowd-shot videos used in live visualizers.</li>
+        </ul>
+
+        <blockquote>"Energy and vulnerability walk together. Because soul doesn’t have to whisper—sometimes it roars."</blockquote>
+
+        <h2>How to recreate the neon sound at home — quick workflow</h2>
+        <p>If you want to capture a hint of DYLN’s studio energy, follow this streamlined workflow:</p>
+        <ol>
+          <li>Start with a rhythmic skeleton: 808 or hybrid kick, crisp percussion, tempo set to your target festival energy.</li>
+          <li>Design a lead with character: detune two saws, add a light chorus, and automate a sharp filter sweep into the drop.</li>
+          <li>Build a vocal hook that's repeatable and chantable — shorter often hits harder.</li>
+          <li>Sculpt the low end with gentle saturation and a tight limiter on the master bus; preserve headroom for live PA boosts.</li>
+        </ol>
+
+        <h2>Merch and visual identity — translating sound into objects</h2>
+        <p>Merch must feel like the show: wearable neon, high-contrast prints, and bold messaging. Think black foundation with electric trims, reflective inks, and symbols pulled from visualizers. The goal is that wearing the merch signals membership in the neon community.</p>
+
+        <h3>Merch design checklist</h3>
+        <ul>
+          <li>High-contrast palettes — avoid muted pastels.</li>
+          <li>Bold fonts that read from a distance.</li>
+          <li>Small visual icons that reference songs — a broken heart for "PROUD," a jagged pulse for "NASTY."</li>
+        </ul>
+
+        <h2>Measuring success without losing the soul</h2>
+        <p>Metrics matter, but they’re a map, not the territory. Engagement, playlist saves, and festival chatter are useful—yet success is also measured by the moments people report: the first time someone shouted a lyric, the clip that went viral because the crowd found its voice. Those are the metrics that mean the world turned neon for a second.</p>
+
+      </section>
+
+      <section class="side-by-side special-image-left">
+        <img src="https://drive.google.com/thumbnail?id=1ysU__pBbFx9kCJyaPxKYm-IAv6ZvT4WG" alt="DYLN live visualizer snapshot" />
+        <div class="side-text">
+          <h2>Side-by-side: studio idea → festival reality</h2>
+          <p>In the studio the idea is microscopic: a melody, a gyrating bassline, a sample. On stage it becomes macroscopic — lights, bodies, motion. The trick is to design with both scales in mind. When a synth is mixed, imagine how it will look when lit: will it cut through? Will it become a motif the crowd recognizes?</p>
+          <p>That dual-thinking makes transitions smoother and ensures that production choices survive translation from headphones to live PA—and still feel human.</p>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <img src="https://drive.google.com/thumbnail?id=1ysU__pBbFx9kCJyaPxKYm-IAv6ZvT4WG" alt="Visualizer pack thumbnail" />
+        <div>
+          <h2>Visualizer pack & remix stems</h2>
+          <p>To help fans and creators, a curated visualizer pack and stems are available to remix with. These assets are crafted to keep the neon language intact: high-contrast templates, loopable visual atoms, and stems labeled for immediate live use.</p>
+          <p>This makes it easy for creators to craft content that looks and sounds like the world we built — turning playlists into motion pieces across social feeds.</p>
+          <a class="cta-button" href="https://dyln-music.s3.eu-north-1.amazonaws.com/how-dyln-built-neon-electric-festival-worlds" target="_blank" rel="noopener nofollow" aria-label="Access dyln music visualizer assets">Get dyln music visual assets</a>
+        </div>
+      </section>
+
+      <section class="featured-accordion--accordion_VDHx7k">
+        <h2>FAQ — quick answers for fans and creators</h2>
+        <details>
+          <summary>How do I feel the DYLN energy live?</summary>
+          <div class="accordion-content">
+            <p>Show up with an open body and open mind. DYLN shows layer high-energy drops with intimate pockets; embrace both. Dress in high-contrast gear, bring your crew, and let the beat guide you. If you want to prepare, listen to "ADDICTED" and identify the first drop — that’s a practice run.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Can I remix DYLN tracks?</summary>
+          <div class="accordion-content">
+            <p>Yes. Stems and remix packs are periodically released. Use the provided stems, tag the release, and share your vision. Remixes that keep the neon identity and amplify the emotional core get spotlighted.</p>
+          </div>
+        </details>
+        <details>
+          <summary>What gear creates the sub-bass chest hit?</summary>
+          <div class="accordion-content">
+            <p>It’s a blend: clean sine-based subs, a tightly tuned kick, and harmonic saturation. The secret is in the transient control and the way the low end is glued—allowing it to punch without mud. Room treatment and proper monitoring are essential for dialing it in.</p>
+          </div>
+        </details>
+        <details>
+          <summary>How do I apply DYLN visuals to my content?</summary>
+          <div class="accordion-content">
+            <p>Use the visualizer pack templates and sync them to stems or clock. Keep contrast high, avoid pastel washes, and use bold type. Simple loopable atoms repeat well on short-form video and translate live.</p>
+          </div>
+        </details>
+        <details>
+          <summary>What’s the best way to capture a live DYLN moment for socials?</summary>
+          <div class="accordion-content">
+            <p>Film short clips that capture the crowd reaction and the light shifts at the drop. Keep vertical edits punchy: 6–15 seconds with a clean audio lead-in. Tag the official channels to increase the chance of resharing.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Where can I hear more songs like ADDICTED?</summary>
+          <div class="accordion-content">
+            <p>Explore DYLN’s releases and curated playlists. Live sets and remixes often showcase adjacent tracks and unreleased IDs that carry the same energy.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="glossary">
+        <h2>Glossary — terms in the DYLN neon lexicon</h2>
+        <dl>
+          <dt>Drop</dt>
+          <dd>The climactic moment where energy peaks — designed to reset the room.</dd>
+          <dt>Visualizer</dt>
+          <dd>The moving graphics that respond to audio and create a visual identity for a track or set.</dd>
+          <dt>Stems</dt>
+          <dd>Individual track elements (vocals, bass, synths) provided for remixing or live manipulation.</dd>
+          <dt>Motif</dt>
+          <dd>A short musical or visual idea repeated to build recognition.</dd>
+          <dt>Sub-bass</dt>
+          <dd>Very low frequencies designed to be felt physically, often underpinning festival drops.</dd>
+          <dt>Call-and-response</dt>
+          <dd>A performance technique where the artist cues the crowd and the crowd answers back.</dd>
+          <dt>Neon palette</dt>
+          <dd>High-contrast colors (electric blue, purple, pink) used to create a glowing aesthetic.</dd>
+          <dt>Mood pocket</dt>
+          <dd>A deliberate quiet or intimate section inside a larger high-energy set.</dd>
+          <dt>Elastic structure</dt>
+          <dd>Song arrangements built to be stretched, looped, or re-shaped live without losing coherence.</dd>
+          <dt>Community remix</dt>
+          <dd>A remix or piece of fan content that’s adopted and amplified by the artist’s channels.</dd>
+        </dl>
+      </section>
+
+      <p class="article-ending">This piece is a snapshot: a neon map of how sound, visuals, and community combine to create something bigger than a track. If you felt a spark reading this, bring it to the next show — raise your hands, sing the hook, make it yours.</p>
+
+      <p style="margin-top:1.25rem;font-size:.95em;">Explore the full breakdown and assets: <a href="https://dyln-music.s3.eu-north-1.amazonaws.com/how-dyln-built-neon-electric-festival-worlds" target="_blank" rel="noopener nofollow">https://dyln-music.s3.eu-north-1.amazonaws.com/how-dyln-built-neon-electric-festival-worlds</a></p>
+    </div>
+  </div>
+</body>
+</html>
